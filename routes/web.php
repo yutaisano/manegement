@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +13,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+//商品一覧表示
+Route::get('/','ProductController@showList')->name('product');
+
+
+
+//ログイン機能
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
