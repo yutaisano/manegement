@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -16,6 +15,20 @@
     <div class="flex-center position-ref full-height">
             
     <h1>商品一覧</h1>
+
+    <!--検索機能-->
+
+    <form method="GET" action="{{ route('product') }}">
+    <input type="search" placeholder="ユーザー名を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+    <div>
+        <button type="submit">検索</button>
+        <button>
+            <a href="{{ route('product') }}" class="text-white">
+                クリア
+            </a>
+        </button>
+    </div>
+</form>
 
     <table class="table table-striped">
         <thead>

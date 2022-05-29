@@ -19,6 +19,10 @@ Route::get('/','ProductController@showList')->name('product');
 
 
 
+Route::get('/products', 'productController@index');
+
+
+
 //ログイン機能
 Auth::routes();
 
