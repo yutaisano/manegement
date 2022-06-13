@@ -14,19 +14,9 @@
     
     <div class="flex-center position-ref full-height">
             
-    <h1>商品一覧</h1>
+    <h1>詳細画面</h1>
 
-    <!--検索機能-->
-    <form action="{{ route('search') }}" method="GET">
-        <p><input type="text" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></p>
-        <p><input type="submit" value="検索"></p>
-        <button>
-            <a href="{{ route('product') }}" class="text-white">
-                クリア
-            </a>
-        </button>
-
-    </form>
+   
 
 
     <!--商品一覧表示-->
@@ -50,7 +40,6 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
                 <td>{{ $product->comment }}</td>
-                <td><a href="{{ route('detail', ['id'=>$product->id]) }}"  class="btn btn-primary">詳細</a></td>
             </tr>
             @endforeach
         </tbody>

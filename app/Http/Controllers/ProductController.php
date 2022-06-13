@@ -20,27 +20,30 @@ class ProductController extends Controller
         ]);
     }
 
-
-    //検索機能
-    public function index(Request $request)
+    //商品詳細表示
+    public function detail()
     {
-        $keyword = $request->input('keyword');
-        $stock = $request->input('stock');
- 
-        $query = Product::query();
- 
-        if (!empty($keyword)) {
-            $query->where('id', 'LIKE', "%{$keyword}%")
-                ->orWhere('product_name', 'LIKE', "%{$keyword}%");
-        }
- 
-        if (!empty($stock)) {
-            $query->where('stocks', '>=', $stock);
-        }
- 
-        $books = $query->get();
- 
-        return view('product.list', compact('products', 'keyword', 'stock'));
+        $detail = Product::find($id);
+
+        return view('product.detail', compact('detail'));
     }
 
+
+    public function search(Request $request)
+    {
+        $product_name = $request -> keyword;
+
+         if(!empty($product_name)){
+            //Productテーブルからクエリを取得
+            $query = Product::query();
+
+            //where句で検索結果をproductsに代入
+            $products = $query -> where('product_name','like','%'.$product_name.'%') -> get();
+
+        //list.blade.phpに検索結果を表示
+        return view('product.list',['products' => $products]);
+    }
+
+    }
+    
 }

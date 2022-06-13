@@ -17,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 //商品一覧表示
 Route::get('/','ProductController@showList')->name('product');
 
+//商品詳細表示
+Route::get('/detail/{id}', 'ProductController@detail')->name('detail');
 
-
-Route::get('/products', 'productController@index');
-
+//検索機能
+Route::get('/search','ProductController@search')->name('search');
 
 
 //ログイン機能
