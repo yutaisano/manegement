@@ -17,14 +17,24 @@
     <h1>商品一覧</h1>
 
     <!--検索機能-->
-    <form action="{{ route('search') }}" method="GET">
-        <p><input type="text" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></p>
-        <p><input type="submit" value="検索"></p>
-        <button>
-            <a href="{{ route('product') }}" class="text-white">
-                クリア
-            </a>
-        </button>
+    <div class="input-group" >
+        <form action="{{ route('search') }}" method="GET">
+            <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></input>
+            <span class="input-group-btn input-group-append">
+                <input type="submit" id="btn-search" class="btn btn-primary" value="検索"><i class="fas fa-search"></i> </submit>
+            </span>
+            <div class="clearfix">
+                <button>
+                    <a href="{{ route('product') }}" class="text-black">
+                    クリア
+                    </a>
+                </button>
+            </div>
+        </form>
+    </div>
+
+        
+        
 
     </form>
 
@@ -45,12 +55,13 @@
             @foreach($products as $product)
             <tr>
                 <td>{{ $product->id }}</td>
+                
                 <td>{{ $product->img }}</td>
                 <td>{{ $product->product_name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
                 <td>{{ $product->comment }}</td>
-                <td><a href="{{ route('detail', ['id'=>$product->id]) }}"  class="btn btn-primary">詳細</a></td>
+                <td><a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">詳細</a></td>
             </tr>
             @endforeach
         </tbody>

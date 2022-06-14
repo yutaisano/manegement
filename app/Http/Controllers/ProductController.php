@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -21,14 +22,24 @@ class ProductController extends Controller
     }
 
     //商品詳細表示
-    public function detail()
-    {
-        $detail = Product::find($id);
+    // public function detail($id)
+    // {
+    //     $products = Product::find($id);
 
-        return view('product.detail', compact('detail'));
-    }
+    //     return view('product.detail', ['products' => $products]);
+    // }
 
 
+    //商品詳細表示（成功例）
+    public function detail(Request $request) 
+        {   
+            $id = $request->id;
+            $products = DB::table('products')->where('id', $id)->get();
+            return view('product.list', ['products'=>$products]);
+        }
+
+
+    //商品検索
     public function search(Request $request)
     {
         $product_name = $request -> keyword;
