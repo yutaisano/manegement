@@ -35,7 +35,7 @@ class ProductController extends Controller
         {   
             $id = $request->id;
             $products = DB::table('products')->where('id', $id)->get();
-            return view('product.list', ['products'=>$products]);
+            return view('product.detail', ['products'=>$products]);
         }
 
 

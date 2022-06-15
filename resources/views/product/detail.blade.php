@@ -4,7 +4,7 @@
 <html lang="ja">
 <html>
 <head>
-    <title>商品一覧</title>
+    <title>商品詳細</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="/js/app.js" defer></script>
 
@@ -15,11 +15,15 @@
     <div class="flex-center position-ref full-height">
             
     <h1>詳細画面</h1>
-
+    <div class="clearfix">
+        <button>
+            <a href="{{ route('product') }}" class="text-black">一覧に戻る</a>
+        </button>
+    </div>
    
 
 
-    <!--商品一覧表示-->
+    <!--商品詳細表示-->
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,6 +32,7 @@
                 <th>商品名</th>
                 <th>価格</th>
                 <th>在庫数</th>
+                <th>企業名</th>
                 <th>コメント</th>
             </tr>
         </thead>
@@ -39,6 +44,7 @@
                 <td>{{ $product->product_name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
+                <td>{{ $product->company }}</td>
                 <td>{{ $product->comment }}</td>
             </tr>
             @endforeach
