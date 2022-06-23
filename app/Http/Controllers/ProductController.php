@@ -56,5 +56,22 @@ class ProductController extends Controller
     }
 
     }
+
+    //商品登録画面
+    public function ProductRegister(Request $request)
+    {
+        return view('product.register');
+    }
+
+    //商品登録機能
+    public function Registerfunc(Request $request){
+        return view('product.register', [
+            'user' => Auth::user(),
+            'categories' => Category::all(),
+            'products_status'  => ProductStatus::all(),
+            'sales' => Sale::all(),
+        ]);
+
+    }
     
 }

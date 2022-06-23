@@ -23,6 +23,10 @@ Route::get('/detail/{id}', 'ProductController@detail')->name('detail');
 //検索機能
 Route::get('/search','ProductController@search')->name('search');
 
+//商品登録
+Route::get('/ProductRegister','ProductController@ProductRegister')->name('ProductRegister');
+
+
 
 //ログイン機能
 Auth::routes();

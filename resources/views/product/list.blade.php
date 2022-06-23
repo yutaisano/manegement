@@ -21,7 +21,7 @@
             <form action="{{ route('search') }}" method="GET">
                 <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></input>
                 <span class="input-group-btn input-group-append">
-                    <input type="submit" id="btn-search" class="btn btn-primary" value="検索"><i class="fas fa-search"></i> </submit>
+                    <input type="submit" id="btn-search" class="btn btn-primary" value="検索"><i class="fas fa-search"></i> </input>
                 </span>
                 <div class="clearfix">
                     <button>
@@ -37,6 +37,15 @@
         
 
     </form>
+
+    <!--商品登録機能-->
+    <div class="clearfix">
+        <form action="{{ route('ProductRegister') }}" method="Get">
+            <button>
+                <a href="{{ route('ProductRegister') }}" class="text-black">商品登録</a>
+            </button>
+            
+    </div>
 
 
     <!--商品一覧表示-->
