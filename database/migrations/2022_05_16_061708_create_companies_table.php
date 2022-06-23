@@ -14,9 +14,9 @@ class CreateCompaniesTable extends Migration
     public function up()
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->string('メーカー名');
-            $table->string('住所');
-            $table->string('代表者');
+            $table->string('company');
+            $table->string('adress');
+            $table->string('Representative');
             $table->timestamps();
         });
     }

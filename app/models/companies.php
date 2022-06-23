@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class companies extends Model
+{
+    //
+    //テーブル名
+    protected $table = 'companies';
+
+    //可変項目
+    protected $fillable = 
+    [
+        'conpany',
+        'adress',
+        'Representative'
+        
+    ];
+}
