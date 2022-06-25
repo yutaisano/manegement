@@ -23,8 +23,11 @@ Route::get('/detail/{id}', 'ProductController@detail')->name('detail');
 //検索機能
 Route::get('/search','ProductController@search')->name('search');
 
+//商品登録画面
+Route::get('/create','ProductController@showCreate')->name('create');
+
 //商品登録
-Route::get('/ProductRegister','ProductController@ProductRegister')->name('ProductRegister');
+Route::post('/store','ProductController@exeStore')->name('store');
 
 
 

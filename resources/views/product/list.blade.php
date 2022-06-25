@@ -40,9 +40,9 @@
 
     <!--商品登録機能-->
     <div class="clearfix">
-        <form action="{{ route('ProductRegister') }}" method="Get">
+        <form action="{{ route('create') }}" method="Get">
             <button>
-                <a href="{{ route('ProductRegister') }}" class="text-black">商品登録</a>
+                <a href="{{ route('create') }}" class="text-black">商品登録</a>
             </button>
             
     </div>
