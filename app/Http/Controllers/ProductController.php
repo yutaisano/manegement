@@ -46,22 +46,32 @@ class ProductController extends Controller
 
 
     //商品検索
+    public function searchDisplay(){
+
+        return view('product.search',[
+             'companies' => companies::all(),
+         ]);
+
+    }
+
     public function search(Request $request){
 
         $product_name = $request -> keyword;
+        $company = $request -> company;
 
-         if(!empty($product_name)){
             //Productテーブルからクエリを取得
             $query = Product::query();
 
             //where句で検索結果をproductsに代入
-            $products = $query -> where('product_name','like','%'.$product_name.'%') -> get();
+            $products = $query -> where('product_name','like','%'.$product_name.'%')->get();
+            $products = $query -> where('company','like','%'.$company.'%')->get();
 
             //list.blade.phpに検索結果を表示
             return view('product.list',['products' => $products]);
+            
         }
 
-    }
+    
 
     //商品登録画面
     public function showCreate(){

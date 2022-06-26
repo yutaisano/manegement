@@ -1,5 +1,6 @@
 
 @auth
+
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -12,7 +13,7 @@
     
 </head>
 <body>
-    
+    <header>@include('product.header')</header>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>商品登録</h2>

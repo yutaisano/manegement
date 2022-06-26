@@ -9,9 +9,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class ="nav-item nav-link active" href="#">商品一覧<span class="sr-only"></a>
+                    <a class ="nav-item nav-link active" href="{{ route('product') }}">商品一覧<span class="sr-only"></a>
                     <a class = "nav-item nav-link" href="{{ route('create') }}">商品登録</a>
-                    <a class = "nav-item nav-link" href="#">商品検索</a>
+                    <a class = "nav-item nav-link" href="{{ route('searchDisplay') }}">商品検索</a>
                 </div>
             </div>
 

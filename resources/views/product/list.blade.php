@@ -1,5 +1,3 @@
-
-
 @auth
  
     @extends('product.layout')
@@ -7,27 +5,6 @@
     <div class="flex-center position-ref full-height">
         <h1>商品一覧</h1>
 
-        <!--検索機能-->
-        <div class="input-group" >
-            <form action="{{ route('search') }}" method="GET">
-                <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></input>
-                <span class="input-group-btn input-group-append">
-                    <input type="submit" id="btn-search" class="btn btn-primary" value="検索"><i class="fas fa-search"></i> </input>
-                </span>
-                <div class="clearfix">
-                    <button>
-                        <a href="{{ route('product') }}" class="text-black">
-                            クリア
-                        </a>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        
-        
-
-    </form>
 
     <!--商品一覧表示-->
         <table class="table table-striped">
