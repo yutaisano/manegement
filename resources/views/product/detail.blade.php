@@ -50,6 +50,11 @@
                     <td>{{ $product->stocks }}</td>
                     <td>{{ $product->company }}</td>
                     <td>{{ $product->comment }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="location.href='{{ route('edit', ['id'=>$product->id]) }}'">
+                            編集
+                        </button>
+                    </td>
                 </tr>
                  @endforeach
             </tbody>
