@@ -1,4 +1,3 @@
-@auth
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -7,11 +6,17 @@
     <title>商品登録画面</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="/js/app.js" defer></script>
-
+    
     
 </head>
+
+
 <body>
-    
+    <header>
+      @include('product.header')
+    </header>
+
+    @auth
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>商品情報編集</h2>

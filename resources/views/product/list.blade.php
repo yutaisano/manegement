@@ -1,20 +1,10 @@
-@extends('layouts.app')
+
+
 @auth
-<!DOCTYPE HTML>
-
-<html lang="ja">
-<html>
-<head>
-    <title>商品一覧</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="/js/app.js" defer></script>
-
-    
-</head>
-<body>
-    
+ 
+    @extends('product.layout')
+    @section('top-page')
     <div class="flex-center position-ref full-height">
-            
         <h1>商品一覧</h1>
 
         <!--検索機能-->
@@ -38,16 +28,6 @@
         
 
     </form>
-
-    <!--商品登録機能-->
-    <div class="clearfix">
-        <form action="{{ route('create') }}" method="Get">
-            <button>
-                <a href="{{ route('create') }}" class="text-black">商品登録</a>
-            </button>
-        </form>
-    </div>
-
 
     <!--商品一覧表示-->
         <table class="table table-striped">
@@ -92,18 +72,8 @@
             </tbody>
         </table>
     </div>
-    <script>
-        function checkDelete(){
-            if(window.confirm('削除してもよろしいですか？')){
-                return true;
-            }else{
-                return falese;
-            }
-        }
-    </script>
-    
-</body>
-</html>
+    @endsection
+
 @endauth
 
 

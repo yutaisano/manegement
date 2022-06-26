@@ -1,22 +1,33 @@
+
+
 <!DOCTYPE HTML>
+
 <html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
+    <title>商品一覧</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="/js/app.js" defer></script>
 </head>
 <body>
     <header>
-      @include('header')
+      @include('product.header')
     </header>
-    <br>
+    @auth
     <div class="container">
-      @yield('content')
+      @yield('top-page')
     </div>
-    <footer class="footer bg-dark  fixed-bottom">
-      @include('footer')
-    </footer>
+    <script>
+        function checkDelete(){
+            if(window.confirm('削除してもよろしいですか？')){
+                return true;
+            }else{
+                return falese;
+            }
+        }
+    </script>
+    
 </body>
 </html>
+
+@endauth

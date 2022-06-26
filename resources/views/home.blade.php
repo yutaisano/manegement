@@ -15,8 +15,15 @@
                     @endif
 
                     You are logged in!
+                    
                 </div>
+                
             </div>
+            <div class="clearfix">
+                        <button>
+                            <a href="{{ route('product') }}" class="text-black">一覧に戻る</a>
+                        </button>
+                    </div>
         </div>
     </div>
 </div>
