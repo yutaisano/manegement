@@ -14,9 +14,11 @@
     
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h2>商品登録</h2>
-        <form method="POST" action="{{ route('store') }}" action="/upload" enctype="multipart/form-data" onSubmit="return checkStore()">
+        <h2>商品情報編集</h2>
+        <form method="POST" action="{{ route('update') }}" action="/upload" enctype="multipart/form-data" onSubmit="return checkStore()">
             @csrf
+
+            <input type="hidden" name="id" value="{{ $products->id }}">
             <div class="form-group">
                 <label for="product_name">
                     商品名
@@ -25,7 +27,7 @@
                     id="product_name"
                     name="product_name"
                     class="form-control"
-                    value="{{ old('product_name') }}"
+                    value="{{ $products->product_name }}"
                     type="text"
                 >
                 @if ($errors->has('title'))
@@ -65,7 +67,7 @@
                     id="price"
                     name="price"
                     class="form-control"
-                    value="{{ old('price') }}"
+                    value="{{ $products->price }}"
                     type="text"
                 >
                 
@@ -80,7 +82,7 @@
                     id="stocks"
                     name="stocks"
                     class="form-control"
-                    value="{{ old('stocks') }}"
+                    value="{{ $products->stocks }}"
                     type="text"
                 >
                 
@@ -96,7 +98,7 @@
                     name="comment"
                     class="form-control"
                     rows="4"
-                >{{ old('comment') }}</textarea>
+                >{{ $products->comment }}</textarea>
                 
             </div>
 
@@ -106,7 +108,7 @@
                     キャンセル
                 </a>
                 <button type="submit" class="btn btn-primary" >
-                    登録する
+                    更新する
                 </button>
             </div>
         </form>
@@ -115,7 +117,7 @@
 
 <script>
         function checkStore(){
-            if(window.confirm('登録してもよろしいですか？')){
+            if(window.confirm('更新してもよろしいですか？')){
                 return true;
             }else{
                 return falese;
@@ -125,5 +127,6 @@
     
 </body>
 </html>
+
 
 @endauth

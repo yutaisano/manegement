@@ -20,6 +20,10 @@ Route::get('/','ProductController@showList')->name('product');
 //商品詳細表示
 Route::get('/detail/{id}', 'ProductController@detail')->name('detail');
 
+//編集画面表示
+Route::get('/edit/{id}', 'ProductController@showEdit')->name('edit');
+Route::post('/update','ProductController@exeUpdate')->name('update');
+
 //検索機能
 Route::get('/search','ProductController@search')->name('search');
 
@@ -28,6 +32,9 @@ Route::get('/create','ProductController@showCreate')->name('create');
 
 //商品登録
 Route::post('/store','ProductController@exeStore')->name('store');
+
+//商品情報削除
+Route::post('/delete/{id}','ProductController@exeDelete')->name('delete');
 
 
 

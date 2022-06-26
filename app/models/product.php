@@ -17,6 +17,7 @@ class product extends Model
         'product_name',
         'price',
         'stocks',
+        'company',
         'comment'
         
     ];

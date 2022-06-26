@@ -6,7 +6,9 @@ use App\Models\Product;
 use App\Models\Companies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -15,11 +17,13 @@ class ProductController extends Controller
      * 
      * @return view
      */
-    public function showList(){
+    public function showList(Request $request){
 
         $products = product::all();
+
         return view('product.list',[
-            'products' => $products,
+            'products' => $products
+
         ]);
     }
 
@@ -68,21 +72,80 @@ class ProductController extends Controller
     }
 
 
+
     //商品登録機能
     public function exeStore(Request $request){
 
         //商品データを受け取る
         $input = $request->all();
+        $image = $request->file('img');
+        $path = \Storage::put('/public',$image);
+        $path = explode('/',$path);
+
         //商品を登録
         Product::create([
             'product_name' => $input['product_name'],
-            'img' => $input['img'],
+            //'img' => $image = $request->file('img')->store('storage/public'),
+            'img' => $path[1],
+            'company' => $input['company'],
             'price' => $input['price'],
             'stocks' => $input['stocks'],
             'comment' => $input['comment'],
         ]);
+
+        return redirect(route('product'));
+    }
+
+
+
+    //商品編集画面
+    public function showEdit(Request $request) {
+
+        $id = $request->id;
+        //$products = DB::table('products')->where('id', $id)->first();
+        $products = Product::find($id);
+
+
+        return view('product.edit', ['products'=>$products],['companies' => companies::all()]);
+    
+    }
+
+    public function exeUpdate(Request $request){
+
+        //商品データを受け取る
+        $input = $request->all();
+        $input = $request->all();
+        $image = $request->file('img');
+        $path = \Storage::put('/public',$image);
+        $path = explode('/',$path);
+        //商品を更新する
+        \DB::beginTransaction();
+        $products = Product::find($input['id']);
+        $products->fill([
+            'product_name' => $input['product_name'],
+            //'img' => $image = $request->file('img')->store('public/image'),
+            'img' => $path[1],
+            'price' => $input['price'],
+            'company' => $input['company'],
+            'stocks' => $input['stocks'],
+            'comment' => $input['comment'],
+        ]);
+        
+        $products->save();
+
+        \DB::commit();
+
         return redirect(route('product'));
     }
     
     
+    public function exeDelete($id){
+        $post = Product::find($id);
+        $post->delete();
+        Product::destroy($post);
+
+        return redirect(route('product'));
+
+    }
+
 }

@@ -1,4 +1,6 @@
+@auth
 @extends('layouts.app')
+
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -28,8 +30,8 @@
         <thead>
             <tr>
                 <th>id</th>
-                <th>画像</th>
                 <th>商品名</th>
+                <th>画像</th>
                 <th>価格</th>
                 <th>在庫数</th>
                 <th>企業名</th>
@@ -39,9 +41,10 @@
         <tbody>
             @foreach($products as $product)
             <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->img }}</td>
-                <td>{{ $product->product_name }}</td>
+                <td>{{ $product->id }}</td> 
+                <td>{{ $product->product_name }}</td>  
+                <td><img src="{{ asset('storage/' . $product->img) }}"></td> 
+                <!--<td>{{ $product->img }}</td><-->
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
                 <td>{{ $product->company }}</td>
@@ -60,3 +63,4 @@
 </html>
 
 
+@endauth

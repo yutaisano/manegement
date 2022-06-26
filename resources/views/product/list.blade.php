@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@auth
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -44,7 +45,7 @@
             <button>
                 <a href="{{ route('create') }}" class="text-black">商品登録</a>
             </button>
-            
+        </form>
     </div>
 
 
@@ -52,9 +53,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>画像</th>
+                    <th></th>
+                    <th>ID</th>
                     <th>商品名</th>
+                    <th>画像</th>
                     <th>価格</th>
                     <th>在庫数</th>
                     <th>企業名</th>
@@ -64,25 +66,44 @@
             <tbody>
             @foreach($products as $product)
             <tr>
-                <td>{{ $product->id }}</td>    
-                <td>{{ $product->img }}</td>
-                <td>{{ $product->product_name }}</td>
+                <td><a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">詳細</a></td>
+                <td>{{ $product->id }}</td> 
+                <td>{{ $product->product_name }}</td>  
+                <td><img src="{{ asset('/storage/'. $product->img) }}" width=100 height=100></td> 
+                <!--<td>{{ $product->img }}</td><-->
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
                 <td>{{ $product->company }}</td>
                 <td>{{ $product->comment }}</td>
-                <td><a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">詳細</a></td>
+                <td>
+                    <button type="button" class="btn btn-primary" onclick="location.href='{{ route('edit', ['id'=>$product->id]) }}'">
+                    編集
+                    </button>
+                </td>
+                <td>
+                <form method="POST" action="{{ route('delete',$product->id)}}" onSubmit="return checkDelete()">
+                    @csrf 
+                 
+                    <button type="submit" class="btn btn-primary" >削除</button>
+                </form>
+                </td>
             </tr>
             @endforeach
             </tbody>
-
-
-            <!--検索結果を表示する-->
-
         </table>
     </div>
+    <script>
+        function checkDelete(){
+            if(window.confirm('削除してもよろしいですか？')){
+                return true;
+            }else{
+                return falese;
+            }
+        }
+    </script>
     
 </body>
 </html>
+@endauth
 
 
