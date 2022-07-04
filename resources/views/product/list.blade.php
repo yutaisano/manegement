@@ -1,11 +1,10 @@
 @auth
  
     @extends('product.layout')
+    
     @section('top-page')
     <div class="flex-center position-ref full-height">
         <h1>商品一覧</h1>
-
-
     <!--商品一覧表示-->
         <table class="table table-striped">
             <thead>
@@ -21,13 +20,14 @@
                 </tr>
             </thead>
             <tbody>
+            <!--コントローラで$productsに代入したテーブルデータを$productで順々に表示-->
             @foreach($products as $product)
             <tr>
                 <td><a href="{{ route('detail', ['id'=>$product->id]) }}" class="btn btn-primary">詳細</a></td>
                 <td>{{ $product->id }}</td> 
-                <td>{{ $product->product_name }}</td>  
+                <td>{{ $product->product_name }}</td> 
                 <td><img src="{{ asset('/storage/'. $product->img) }}" width=100 height=100></td> 
-                <!--<td>{{ $product->img }}</td><-->
+                <!--<td>{{ $product->img }}</td>-->
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stocks }}</td>
                 <td>{{ $product->company }}</td>
@@ -49,6 +49,7 @@
             </tbody>
         </table>
     </div>
+    
     @endsection
 
 @endauth

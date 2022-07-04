@@ -49,18 +49,20 @@ class ProductController extends Controller
     public function searchDisplay(){
 
         return view('product.search',[
-             'companies' => companies::all(),
-         ]);
+            'companies' => companies::all(),
+        ]);
 
     }
 
     public function search(Request $request){
+        
 
         $product_name = $request -> keyword;
         $company = $request -> company;
 
             //Productテーブルからクエリを取得
             $query = Product::query();
+  
 
             //where句で検索結果をproductsに代入
             $products = $query -> where('product_name','like','%'.$product_name.'%')->get();

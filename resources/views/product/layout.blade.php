@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 
 <html lang="ja">
@@ -15,8 +13,16 @@
     </header>
     @auth
     <div class="container">
-      @yield('top-page')
+        @yield('top-page')
+        @yield('search')
     </div>
+
+    
+    
+    <div>
+        @yield('search')
+    </div>
+
     <script>
         function checkDelete(){
             if(window.confirm('削除してもよろしいですか？')){

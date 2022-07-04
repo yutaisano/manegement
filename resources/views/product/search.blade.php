@@ -1,24 +1,12 @@
+@extends('product.layout')
+
+@section('search')
 @auth
-<!DOCTYPE HTML>
-
-<html lang="ja">
-<html>
-<head>
-    <title>商品登録画面</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="/js/app.js" defer></script>
-
-    
-</head>
-<body>
-    <header>
-    @include('product.header')
-    </header>
-    <div class="flex-center position-ref full-height">
-        <h1>商品一覧</h1>
-
+<div class="container">
+    <div class="flex-bottom position-ref full-height">
         <!--検索機能-->
         <div class="input-group">
+            
             <form action="{{ route('search') }}" method="GET">
                 <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力" name="keyword" value="@if (isset($search)) {{ $search }} @endif"></input>
                
@@ -45,13 +33,13 @@
                 <div class="clearfix">
                     <button>
                         <a href="{{ route('product') }}" class="text-black">
-                            クリア
+                            キャンセル
                         </a>
                     </button>
                 </div>
             </form>
         </div>
     </div>
-</body>
-</html>
+</div>
 @endauth
+@endsection

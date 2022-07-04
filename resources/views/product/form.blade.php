@@ -14,6 +14,8 @@
 </head>
 <body>
     <header>@include('product.header')</header>
+
+<div class="container">
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>商品登録</h2>
@@ -43,20 +45,17 @@
                 
             
             <div class="form-group-sm clearfix">
-                        <label for="formGroupExampleInput2" class="mt-3 mb-0">企業名</label>
+                <label for="formGroupExampleInput2" class="mt-3 mb-0">企業名</label>
 
-                        <div class="product-info width-control">
-                            <select class="content-half-width form-control-sm d-inline" id="changeSelect" name="company" onchange="entryChange2();">
-
-                                <option value="">未選択</option>
+                    <div class="product-info width-control">
+                        <select class="content-half-width form-control-sm d-inline" id="changeSelect" name="company" onchange="entryChange2();">
+                            <option value="">未選択</option>
                                 @foreach ($companies as $company)
                                     <option value="{{ $company->company }}">{{ $company->company }}</option>
                                 @endforeach
-                                
-
-                            </select>
-                        </div>
+                        </select>
                     </div>
+            </div>
 
 
             <div class="form-group">
@@ -113,6 +112,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
 <script>
