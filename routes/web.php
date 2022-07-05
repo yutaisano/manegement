@@ -25,7 +25,7 @@ Route::get('/edit/{id}', 'ProductController@showEdit')->name('edit');
 Route::post('/update','ProductController@exeUpdate')->name('update');
 
 //検索機能
-Route::get('/searchDisplay','ProductController@searchDisplay')->name('searchDisplay');
+//Route::get('/searchDisplay','ProductController@searchDisplay')->name('searchDisplay');
 Route::get('/search','ProductController@search')->name('search');
 
 //商品登録画面

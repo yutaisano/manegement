@@ -21,10 +21,7 @@ class ProductController extends Controller
 
         $products = product::all();
 
-        return view('product.list',[
-            'products' => $products
-
-        ]);
+        return view('product.list',['products' => $products],['companies' => companies::all()]);
     }
 
     //商品詳細表示
@@ -46,16 +43,8 @@ class ProductController extends Controller
 
 
     //商品検索
-    public function searchDisplay(){
-
-        return view('product.search',[
-            'companies' => companies::all(),
-        ]);
-
-    }
 
     public function search(Request $request){
-        
 
         $product_name = $request -> keyword;
         $company = $request -> company;
@@ -69,7 +58,7 @@ class ProductController extends Controller
             $products = $query -> where('company','like','%'.$company.'%')->get();
 
             //list.blade.phpに検索結果を表示
-            return view('product.list',['products' => $products]);
+            return view('product.list',['products' => $products],['companies' => companies::all()]);
             
         }
 

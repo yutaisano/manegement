@@ -14,14 +14,9 @@
     @auth
     <div class="container">
         @yield('top-page')
-        @yield('search')
     </div>
 
     
-    
-    <div>
-        @yield('search')
-    </div>
 
     <script>
         function checkDelete(){
