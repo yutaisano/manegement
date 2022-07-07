@@ -18,15 +18,9 @@
 
     
 
-    <script>
-        function checkDelete(){
-            if(window.confirm('削除してもよろしいですか？')){
-                return true;
-            }else{
-                return falese;
-            }
-        }
-    </script>
+    
+    <script src="{{ asset('/js/message.js') }}"></script>
+
     
 </body>
 </html>

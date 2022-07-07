@@ -13,9 +13,9 @@ class companies extends Model
     //可変項目
     protected $fillable = 
     [
-        'conpany',
-        'adress',
-        'Representative'
+        'conpany_name',
+        'street_address',
+        'Representative_name'
         
     ];
 }

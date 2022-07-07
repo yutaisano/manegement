@@ -12,8 +12,8 @@ class product extends Model
     //可変項目
     protected $fillable = 
     [
-        'id',
-        'img',
+        'company_id',
+        'img_path',
         'product_name',
         'price',
         'stocks',

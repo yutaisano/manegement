@@ -39,7 +39,7 @@ class ProductController extends Controller
             $id = $request->id;
             $products = DB::table('products')->where('id', $id)->get();
             return view('product.detail', ['products'=>$products]);
-        }
+    }
 
 
     //商品検索
@@ -60,7 +60,7 @@ class ProductController extends Controller
             //list.blade.phpに検索結果を表示
             return view('product.list',['products' => $products],['companies' => companies::all()]);
             
-        }
+    }
 
     
 
@@ -79,20 +79,22 @@ class ProductController extends Controller
 
         //商品データを受け取る
         $input = $request->all();
-        $image = $request->file('img');
+        $image = $request->file('img_path');
         $path = \Storage::put('/public',$image);
         $path = explode('/',$path);
 
         //商品を登録
+        \DB::beginTransaction();
         Product::create([
             'product_name' => $input['product_name'],
             //'img' => $image = $request->file('img')->store('storage/public'),
-            'img' => $path[1],
+            'img_path' => $path[1],
             'company' => $input['company'],
             'price' => $input['price'],
             'stocks' => $input['stocks'],
             'comment' => $input['comment'],
         ]);
+        \DB::commit();
 
         return redirect(route('product'));
     }
@@ -141,9 +143,11 @@ class ProductController extends Controller
     
     
     public function exeDelete($id){
+        \DB::beginTransaction();
         $post = Product::find($id);
         $post->delete();
         Product::destroy($post);
+        \DB::commit();
 
         return redirect(route('product'));
 

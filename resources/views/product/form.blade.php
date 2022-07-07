@@ -1,22 +1,8 @@
 
 @auth
+@extends('product.layout')
 
-<!DOCTYPE HTML>
 
-<html lang="ja">
-<html>
-<head>
-    <title>商品登録画面</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="/js/app.js" defer></script>
-
-    
-</head>
-<body>
-    <header>@include('product.header')</header>
-
-<div class="container">
-<div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>商品登録</h2>
         <form method="POST" action="{{ route('store') }}" action="/upload" enctype="multipart/form-data" onSubmit="return checkStore()">
@@ -41,7 +27,7 @@
         
 
                 <label for="photo">画像ファイル:</label>
-                <input type="file" class="form-control" name="img">
+                <input type="file" class="form-control" name="img_path">
                 
             
             <div class="form-group-sm clearfix">
@@ -51,7 +37,7 @@
                         <select class="content-half-width form-control-sm d-inline" id="changeSelect" name="company" onchange="entryChange2();">
                             <option value="">未選択</option>
                                 @foreach ($companies as $company)
-                                    <option value="{{ $company->company }}">{{ $company->company }}</option>
+                                    <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
                                 @endforeach
                         </select>
                     </div>
@@ -112,20 +98,10 @@
             </div>
         </form>
     </div>
-</div>
-</div>
 
-<script>
-        function checkStore(){
-            if(window.confirm('登録してもよろしいですか？')){
-                return true;
-            }else{
-                return falese;
-            }
-        }
-    </script>
+
+
+<script src="{{ asset('/js/register.js') }}"></script>
     
-</body>
-</html>
 
 @endauth
