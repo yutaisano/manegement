@@ -65,7 +65,7 @@
                                         <option value="">未選択</option>
                                             @foreach ($companies as $company)
                                             <!--$companyでcompaniesテーブルのcompany_nameの値を取得する-->
-                                            <option value="{{ $company->company_name }}">{{ $company->company_name }}</option>
+                                            <option value="{{ $company->id }}">{{ $company->company_name }}</option>
                                             @endforeach
                                         </select>
                                 </div></td>
