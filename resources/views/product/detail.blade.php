@@ -44,8 +44,8 @@
                 <tr>
                     <td>{{ $product->id }}</td> 
                     <td>{{ $product->product_name }}</td>  
-                    <td><img src="{{ asset('/storage/'. $product->img) }}" width=100 height=100></td> 
-                    <!--<td>{{ $product->img }}</td><-->
+                    <td><img src="{{ asset('/storage/'. $product->img_path) }}" width=100 height=100></td> 
+                    
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stocks }}</td>
                     <td>{{ $product->company }}</td>

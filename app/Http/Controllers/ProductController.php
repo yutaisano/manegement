@@ -44,10 +44,15 @@ class ProductController extends Controller
 
     //商品検索
 
+    //find(id)でレコード指定して企業名カラムを抽出する
+
     public function search(Request $request){
 
         $product_name = $request -> keyword;
         $company = $request -> company;
+        $company = companies::find($company);
+        $company = $company -> company_name;
+        //dd($company);
 
             //Productテーブルからクエリを取得
             $query = Product::query();
