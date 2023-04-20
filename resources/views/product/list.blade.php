@@ -46,7 +46,7 @@
                     編集
                     </button>
                 </td>
-                
+
                 <td>
                     <form method="post" action="{{ route('delete',$product->id)}}" id="delete-id" onSubmit="return checkDelete()">        
                     @csrf
